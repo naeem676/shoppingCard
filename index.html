@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button id="minus-number" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="current-number" type="text" class="form-control text-center" value="1">
-                           <button id="add-number" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="mobilePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$ <span id="current-amount">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
@@ -81,16 +81,43 @@
 
 
    <script>
-             const plusBtn = document.getElementById("add-number");
+             const plusBtn = document.getElementById("mobilePlusBtn");
              plusBtn.addEventListener("click", function(){
                     var currentNumber = document.getElementById("current-number");
-                    var currentValue = parseInt(currentNumber.value);
-                    currentValue = currentValue + 1;
-                    currentNumber.value =  currentValue;
+                    var currentValue =  parseInt(currentNumber.value);
+                    var totalValue = currentValue + 1
+                    currentNumber.value = totalValue ;
+                    var currentAmount = document.getElementById("current-amount") ;
+                    var currentAmountNumber = parseInt(currentAmount.innerText);
+                    var totalAmount = currentAmountNumber + 1219 ;
+                     currentAmount.innerText = totalAmount;
+                     
+
+
+                    
+                    
                     
                     
 
              })
+
+             const minusNumber = document.getElementById("minus-number");
+             minusNumber.addEventListener("click", function(){
+                    var currentNumber = document.getElementById("current-number");
+                    var currentValue = parseInt(currentNumber.value);
+                    currentValue = currentValue - 1;
+                    currentNumber.value =  currentValue;
+                    var currentAmount = document.getElementById("current-amount") ;
+                    var currentAmountNumber = parseInt(currentAmount.innerText);
+                    var totalAmount = currentAmountNumber - 1219 ;
+                     currentAmount.innerText = totalAmount;
+                     
+                  
+                   
+                    
+
+             })
+
 
    </script>
 
