@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="minus-number" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="current-number" type="text" class="form-control text-center" value="1">
+                           <button id="mobileMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="mobileValue" type="text" class="form-control text-center" value="1">
                            <button id="mobilePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$ <span id="current-amount">1219</span></h5>
+                        <h5>$ <span id="mobilePrice">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -81,16 +81,16 @@
 
 
    <script>
-             const plusBtn = document.getElementById("mobilePlusBtn");
-             plusBtn.addEventListener("click", function(){
-                    var currentNumber = document.getElementById("current-number");
-                    var currentValue =  parseInt(currentNumber.value);
-                    var totalValue = currentValue + 1
-                    currentNumber.value = totalValue ;
-                    var currentAmount = document.getElementById("current-amount") ;
-                    var currentAmountNumber = parseInt(currentAmount.innerText);
-                    var totalAmount = currentAmountNumber + 1219 ;
-                     currentAmount.innerText = totalAmount;
+             const mobilePlusBtn = document.getElementById("mobilePlusBtn");
+             mobilePlusBtn.addEventListener("click", function(){
+                    var mobileValue = document.getElementById("mobileValue");
+                    var mobileNumber =  parseInt(mobileValue.value);
+                    var totalMobileValue = mobileNumber + 1
+                    mobileValue.value = totalMobileValue ;
+                    var mobilePrice = document.getElementById("mobilePrice") ;
+                    var currentMobilePrice = parseInt(mobilePrice.innerText);
+                    var totalPlusPrice = currentMobilePrice + 1219 ;
+                    mobilePrice.innerText = totalPlusPrice;
                      
 
 
@@ -101,16 +101,16 @@
 
              })
 
-             const minusNumber = document.getElementById("minus-number");
-             minusNumber.addEventListener("click", function(){
-                    var currentNumber = document.getElementById("current-number");
-                    var currentValue = parseInt(currentNumber.value);
-                    currentValue = currentValue - 1;
-                    currentNumber.value =  currentValue;
-                    var currentAmount = document.getElementById("current-amount") ;
-                    var currentAmountNumber = parseInt(currentAmount.innerText);
-                    var totalAmount = currentAmountNumber - 1219 ;
-                     currentAmount.innerText = totalAmount;
+             const mobileMinusBtn = document.getElementById("mobileMinusBtn");
+             mobileMinusBtn.addEventListener("click", function(){
+               var mobileValue = document.getElementById("mobileValue");
+                    var mobileNumber =  parseInt(mobileValue.value);
+                    var totalMobileValue = mobileNumber - 1
+                    mobileValue.value = totalMobileValue ;
+                    var mobilePrice = document.getElementById("mobilePrice") ;
+                    var currentMobilePrice = parseInt(mobilePrice.innerText);
+                    var totalMinusPrice = currentMobilePrice - 1219 ;
+                    mobilePrice.innerText = totalMinusPrice;
                      
                   
                    
