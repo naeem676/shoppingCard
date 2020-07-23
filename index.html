@@ -102,6 +102,11 @@
                     const currentCasePrice = parseInt(casePrice.innerText);
                     const finalSubTotal = mobilePlusPrice + currentCasePrice;
                     subTotal.innerText = finalSubTotal;
+                    const total = document.getElementById("Total");
+                    const currentTotal = parseInt(total.innerText);
+                    const finalTotal = finalSubTotal;
+                    total.innerText = finalTotal;
+
                     
                
                  })
@@ -125,6 +130,10 @@
                     const currentCasePrice = parseInt(casePrice.innerText);
                     const finalSubTotal = totalMinusPrice + currentCasePrice;
                     subTotal.innerText = finalSubTotal;
+                    const total = document.getElementById("Total");
+                    const currentTotal = parseInt(total.innerText);
+                    const finalTotal = finalSubTotal;
+                    total.innerText = finalTotal;
                     
                     
                     })
@@ -152,7 +161,12 @@
                        const currentMobilePrice = parseInt(mobilePrice.innerText);
                        const finalSubTotal = addCasePrice + currentMobilePrice;
                        subTotal.innerText = finalSubTotal;
-
+                       const total = document.getElementById("Total");
+                       const currentTotal = parseInt(total.innerText);
+                       const finalTotal = finalSubTotal;
+                       total.innerText = finalTotal;
+                    
+                       
                     })
                     ///////////case plus btn area end//////////////////////
 
@@ -175,6 +189,11 @@
                        const currentMobilePrice = parseInt(mobilePrice.innerText);
                        const finalSubTotal =  minusCasePrice + currentMobilePrice;
                        subTotal.innerText = finalSubTotal;
+                       const total = document.getElementById("Total");
+                       const currentTotal = parseInt(total.innerText);
+                       const finalTotal = finalSubTotal;
+                       total.innerText = finalTotal;
+                    
 
                     })
 
