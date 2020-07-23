@@ -43,12 +43,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="caseMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="caseValue" type="text" class="form-control text-center" value="1">
+                           <button id="casePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="casePrice">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="subTotal">1,278</span> </h5>
                         <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="Total">1,278</span> </h5>
                      </div>
                   </div>
                </div>
@@ -81,42 +81,102 @@
 
 
    <script>
+
+
+      //////////////////////mobile price area start////////////////////////////////////
+
+      //////////////////////////////mobile plus btn area start///////////////////////////
              const mobilePlusBtn = document.getElementById("mobilePlusBtn");
              mobilePlusBtn.addEventListener("click", function(){
-                    var mobileValue = document.getElementById("mobileValue");
-                    var mobileNumber =  parseInt(mobileValue.value);
-                    var totalMobileValue = mobileNumber + 1
-                    mobileValue.value = totalMobileValue ;
-                    var mobilePrice = document.getElementById("mobilePrice") ;
-                    var currentMobilePrice = parseInt(mobilePrice.innerText);
-                    var totalPlusPrice = currentMobilePrice + 1219 ;
-                    mobilePrice.innerText = totalPlusPrice;
-                     
+               const mobileValue = document.getElementById("mobileValue");
+               const mobileNumber =  parseInt(mobileValue.value);
+               const addMobileValue = mobileNumber + 1
+                    mobileValue.value = addMobileValue ;
+                    const mobilePrice = document.getElementById("mobilePrice") ;
+                    const currentMobilePrice = parseInt(mobilePrice.innerText);
+                    const mobilePlusPrice = currentMobilePrice + 1219 
+                    mobilePrice.innerText = mobilePlusPrice;
+                    const subTotal = document.getElementById("subTotal");
+                    const currentSubTotal = parseInt(subTotal.innerText);
+                    const casePrice = document.getElementById("casePrice");
+                    const currentCasePrice = parseInt(casePrice.innerText);
+                    const finalSubTotal = mobilePlusPrice + currentCasePrice;
+                    subTotal.innerText = finalSubTotal;
+                    
+               
+                 })
+                 ///////////mobile plus btn area end//////////////////////
 
-
-                    
-                    
-                    
-                    
-
-             })
+                 ////////////mobile minus area start///////////////////////
 
              const mobileMinusBtn = document.getElementById("mobileMinusBtn");
              mobileMinusBtn.addEventListener("click", function(){
-               var mobileValue = document.getElementById("mobileValue");
-                    var mobileNumber =  parseInt(mobileValue.value);
-                    var totalMobileValue = mobileNumber - 1
-                    mobileValue.value = totalMobileValue ;
-                    var mobilePrice = document.getElementById("mobilePrice") ;
-                    var currentMobilePrice = parseInt(mobilePrice.innerText);
-                    var totalMinusPrice = currentMobilePrice - 1219 ;
+                    var mobileValue = document.getElementById("mobileValue");
+                    const mobileNumber =  parseInt(mobileValue.value);
+                    const minusMobileValue = mobileNumber - 1
+                    mobileValue.value = minusMobileValue ;
+                    const mobilePrice = document.getElementById("mobilePrice") ;
+                    const currentMobilePrice = parseInt(mobilePrice.innerText);
+                    const totalMinusPrice = currentMobilePrice - 1219 ;
                     mobilePrice.innerText = totalMinusPrice;
-                     
-                  
-                   
+                    const subTotal = document.getElementById("subTotal");
+                    const currentSubTotal = parseInt(subTotal.innerText);
+                    const casePrice = document.getElementById("casePrice");
+                    const currentCasePrice = parseInt(casePrice.innerText);
+                    const finalSubTotal = totalMinusPrice + currentCasePrice;
+                    subTotal.innerText = finalSubTotal;
                     
+                    
+                    })
+                    ///////////mobile minus btn area end////////////
 
-             })
+                    ///////////mobile price area end////////////
+
+
+                    //////////////////////case price area start////////////////////////////////////
+
+                    ///////////case plus btn area start//////////////////////
+                    const casePlusBtn = document.getElementById("casePlusBtn");
+                    casePlusBtn.addEventListener("click", function(){
+                       const caseValue = document.getElementById("caseValue");
+                       const currentCaseValue = parseInt(caseValue.value);
+                       const addCaseValue = currentCaseValue + 1;
+                       caseValue.value = addCaseValue;
+                       const casePrice = document.getElementById("casePrice");
+                       const currentCasePrice = parseInt(casePrice.innerText);
+                       const addCasePrice = currentCasePrice + 59;
+                       casePrice.innerText = addCasePrice;
+                       const subTotal = document.getElementById("subTotal");
+                       const currentSubTotal = parseInt(subTotal.innerText);
+                       const mobilePrice = document.getElementById("mobilePrice") ;
+                       const currentMobilePrice = parseInt(mobilePrice.innerText);
+                       const finalSubTotal = addCasePrice + currentMobilePrice;
+                       subTotal.innerText = finalSubTotal;
+
+                    })
+                    ///////////case plus btn area end//////////////////////
+
+
+                    ///////////case minus btn area start//////////////////////
+
+                    const caseMinusBtn = document.getElementById("caseMinusBtn");
+                    caseMinusBtn.addEventListener("click", function(){
+                     const caseValue = document.getElementById("caseValue");
+                       const currentCaseValue = parseInt(caseValue.value);
+                       const minusCaseValue = currentCaseValue - 1;
+                       caseValue.value = minusCaseValue;
+                       const casePrice = document.getElementById("casePrice");
+                       const currentCasePrice = parseInt(casePrice.innerText);
+                       const minusCasePrice = currentCasePrice - 59;
+                       casePrice.innerText = minusCasePrice;
+                       const subTotal = document.getElementById("subTotal");
+                       const currentSubTotal = parseInt(subTotal.innerText);
+                       const mobilePrice = document.getElementById("mobilePrice") ;
+                       const currentMobilePrice = parseInt(mobilePrice.innerText);
+                       const finalSubTotal =  minusCasePrice + currentMobilePrice;
+                       subTotal.innerText = finalSubTotal;
+
+                    })
 
 
    </script>
