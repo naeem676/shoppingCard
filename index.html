@@ -106,10 +106,8 @@
       //////////////////////////////mobile plus btn area start///////////////////////////
              const mobilePlusBtn = document.getElementById("mobilePlusBtn");
              mobilePlusBtn.addEventListener("click", function(){
-               const mobileValue = document.getElementById("mobileValue");
-               const mobileNumber =  parseInt(mobileValue.value);
-               const addMobileValue = mobileNumber + 1;
-                    mobileValue.value = addMobileValue ;
+                plusButton("mobileValue");
+               
                     const mobilePrice = document.getElementById("mobilePrice") ;
                     const currentMobilePrice = parseInt(mobilePrice.innerText);
                     const mobilePlusPrice = currentMobilePrice + 1219; 
@@ -134,15 +132,14 @@
                
                  })
                  ///////////mobile plus btn area end//////////////////////
+                 document.getElementById("mobileValue").value = "1";
 
                  ////////////mobile minus area start///////////////////////
 
              const mobileMinusBtn = document.getElementById("mobileMinusBtn");
              mobileMinusBtn.addEventListener("click", function(){
-                    var mobileValue = document.getElementById("mobileValue");
-                    const mobileNumber =  parseInt(mobileValue.value);
-                    const minusMobileValue = mobileNumber - 1
-                    mobileValue.value = minusMobileValue ;
+                minusButton("mobileValue")
+               
                     const mobilePrice = document.getElementById("mobilePrice") ;
                     const currentMobilePrice = parseInt(mobilePrice.innerText);
                     const totalMinusPrice = currentMobilePrice - 1219 ;
@@ -174,10 +171,9 @@
                     ///////////case plus btn area start//////////////////////
                     const casePlusBtn = document.getElementById("casePlusBtn");
                     casePlusBtn.addEventListener("click", function(){
-                       const caseValue = document.getElementById("caseValue");
-                       const currentCaseValue = parseInt(caseValue.value);
-                       const addCaseValue = currentCaseValue + 1;
-                       caseValue.value = addCaseValue;
+                       plusButton("caseValue");
+                     
+
                        const casePrice = document.getElementById("casePrice");
                        const currentCasePrice = parseInt(casePrice.innerText);
                        const addCasePrice = currentCasePrice + 59;
@@ -199,6 +195,7 @@
                     
                        
                     })
+                    document.getElementById("caseValue").value = "1";
                     ///////////case plus btn area end//////////////////////
 
 
@@ -206,10 +203,7 @@
 
                     const caseMinusBtn = document.getElementById("caseMinusBtn");
                     caseMinusBtn.addEventListener("click", function(){
-                     const caseValue = document.getElementById("caseValue");
-                       const currentCaseValue = parseInt(caseValue.value);
-                       const minusCaseValue = currentCaseValue - 1;
-                       caseValue.value = minusCaseValue;
+                     minusButton("caseValue");
                        const casePrice = document.getElementById("casePrice");
                        const currentCasePrice = parseInt(casePrice.innerText);
                        const minusCasePrice = currentCasePrice - 59;
@@ -231,6 +225,36 @@
                     
 
                     })
+
+
+
+
+
+                    /////////try plus function start//////////////////////////
+                    function plusButton(id){
+                     const Value = document.getElementById(id);
+                       const currentValue = parseInt(Value.value);
+                        const addValue = currentValue + 1;
+                         Value.value = addValue;
+
+                    }
+                    /////////try plus function End//////////////////////////
+
+                    /////////try minus function start//////////////////////////
+                    function minusButton(id){
+                     const Value = document.getElementById(id);
+                       const currentValue = parseInt(Value.value);
+                        const addValue = currentValue - 1  ;
+                         Value.value = addValue;
+                    }
+                     
+
+
+                     /////////try minus function end//////////////////////////
+
+
+
+                    ////////try function end/////////////////////////
 
                     /////////////mobile removeButton start//////////////////////////
 
