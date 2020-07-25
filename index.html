@@ -40,12 +40,12 @@
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
                         <h5>iPhone 11 Silicone Case - Black</h5>
-                     </div>
+                     </div> 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button onclick="handleProductChange('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="caseValue" type="text" class="form-control text-center" value="1">
-                           <button onclick="handleProductChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>           
 
                         </div>
                         <h5>$ <span id="casePrice">59</span></h5>
@@ -100,8 +100,7 @@
 
    <script>
       function handleProductChange( product, isIncrease) {
-            const productValue = document.getElementById( product + 'Value');
-            const productCurrentValue = parseInt(productValue.value);
+            const productCurrentValue = getInputValue(product) ;
             let totalValue = productCurrentValue;
             if(isIncrease == true){
                totalValue = productCurrentValue + 1;
@@ -111,9 +110,7 @@
                totalValue = productCurrentValue - 1;
 
             }
-            productValue.value = totalValue;
-            // const productTotal = totalValue * 59;
-
+            document.getElementById(product + "Value").value = totalValue;
             let productTotal = 0;
             if(product == 'mobile'){
                productTotal = totalValue * 1219
@@ -123,10 +120,29 @@
             }
             document.getElementById(product + 'Price').innerText = productTotal;
 
-
+            calculateTotal();
 
          }
 
+         function calculateTotal() {
+            const mobileCurrentValue = getInputValue("mobile");
+            const caseCurrentValue =  getInputValue("case");
+            const totalPrice = mobileCurrentValue * 1219 + caseCurrentValue * 59;
+            document.getElementById("subTotal").innerText = totalPrice;
+
+            const tax = Math.round (totalPrice * 0.1);
+            document.getElementById("tax").innerText = tax;
+            const total = totalPrice + tax;
+            document.getElementById("Total").innerText = total;
+         }
+         function getInputValue(product) {
+            const productValue = document.getElementById(product + "Value");
+            const productCurrentValue = parseInt(productValue.value);
+            return productCurrentValue;
+            
+
+            
+         }
 
 
          
