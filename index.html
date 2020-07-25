@@ -25,9 +25,9 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="mobileMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductChange('mobile', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="mobileValue" type="text" class="form-control text-center" value="1">
-                           <button id="mobilePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange('mobile', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$ <span id="mobilePrice">1219</span></h5>
                         <img id="removeMobile" src="images/remove.png" alt="" class="remove-item">
@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button id="caseMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductChange('case', false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="caseValue" type="text" class="form-control text-center" value="1">
-                           <button id="casePlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductChange('case', true)" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$ <span id="casePrice">59</span></h5>
@@ -65,7 +65,7 @@
 
                      <div class="col-md-4 status">
                         <h5>$ <span id="subTotal">1,278</span> </h5>
-                        <h5>$ <span id="tax">5</span></h5>
+                        <h5>$ <span id="tax">0</span></h5>
                         <h5>$ <span id="Total">1,278</span> </h5>
                      </div>
                   </div>
@@ -99,162 +99,83 @@
 
 
    <script>
+      function handleProductChange( product, isIncrease) {
+            const productValue = document.getElementById( product + 'Value');
+            const productCurrentValue = parseInt(productValue.value);
+            let totalValue = productCurrentValue;
+            if(isIncrease == true){
+               totalValue = productCurrentValue + 1;
 
+            }
+            else if(isIncrease == false && productCurrentValue > 0 ){
+               totalValue = productCurrentValue - 1;
 
-      //////////////////////mobile price area start////////////////////////////////////
+            }
+            productValue.value = totalValue;
+            // const productTotal = totalValue * 59;
 
-      //////////////////////////////mobile plus btn area start///////////////////////////
-             const mobilePlusBtn = document.getElementById("mobilePlusBtn");
-             mobilePlusBtn.addEventListener("click", function(){
-                plusButton("mobileValue");
-               
-                    const mobilePrice = document.getElementById("mobilePrice") ;
-                    const currentMobilePrice = parseInt(mobilePrice.innerText);
-                    const mobilePlusPrice = currentMobilePrice + 1219; 
-                    mobilePrice.innerText = mobilePlusPrice;
-                    const subTotal = document.getElementById("subTotal");
-                    const currentSubTotal = parseInt(subTotal.innerText);
-                    const casePrice = document.getElementById("casePrice");
-                    const currentCasePrice = parseInt(casePrice.innerText);
-                    const finalSubTotal = mobilePlusPrice + currentCasePrice;
-                    subTotal.innerText = finalSubTotal;
-                    const total = document.getElementById("Total");
-                    const currentTotal = parseInt(total.innerText);
-                    const finalTotal = finalSubTotal;
-                    total.innerText = finalTotal;
-                    const tax = document.getElementById("tax");
-                    const currentTax = parseInt(tax.innerText);
-                    const totalTax = currentTax + 5;
-                    tax.innerText = totalTax;
-
-
-                    
-               
-                 })
-                 ///////////mobile plus btn area end//////////////////////
-                 document.getElementById("mobileValue").value = "1";
-
-                 ////////////mobile minus area start///////////////////////
-
-             const mobileMinusBtn = document.getElementById("mobileMinusBtn");
-             mobileMinusBtn.addEventListener("click", function(){
-                minusButton("mobileValue")
-               
-                    const mobilePrice = document.getElementById("mobilePrice") ;
-                    const currentMobilePrice = parseInt(mobilePrice.innerText);
-                    const totalMinusPrice = currentMobilePrice - 1219 ;
-                    mobilePrice.innerText = totalMinusPrice;
-                    const subTotal = document.getElementById("subTotal");
-                    const currentSubTotal = parseInt(subTotal.innerText);
-                    const casePrice = document.getElementById("casePrice");
-                    const currentCasePrice = parseInt(casePrice.innerText);
-                    const finalSubTotal = totalMinusPrice + currentCasePrice;
-                    subTotal.innerText = finalSubTotal;
-                    const total = document.getElementById("Total");
-                    const currentTotal = parseInt(total.innerText);
-                    const finalTotal = finalSubTotal;
-                    total.innerText = finalTotal;
-                    const tax = document.getElementById("tax");
-                    const currentTax = parseInt(tax.innerText);
-                    const totalTax = currentTax - 5;
-                    tax.innerText = totalTax;
-                    
-                    
-                    })
-                    ///////////mobile minus btn area end////////////
-
-                    ///////////mobile price area end////////////
-
-
-                    //////////////////////case price area start////////////////////////////////////
-
-                    ///////////case plus btn area start//////////////////////
-                    const casePlusBtn = document.getElementById("casePlusBtn");
-                    casePlusBtn.addEventListener("click", function(){
-                       plusButton("caseValue");
-                     
-
-                       const casePrice = document.getElementById("casePrice");
-                       const currentCasePrice = parseInt(casePrice.innerText);
-                       const addCasePrice = currentCasePrice + 59;
-                       casePrice.innerText = addCasePrice;
-                       const subTotal = document.getElementById("subTotal");
-                       const currentSubTotal = parseInt(subTotal.innerText);
-                       const mobilePrice = document.getElementById("mobilePrice") ;
-                       const currentMobilePrice = parseInt(mobilePrice.innerText);
-                       const finalSubTotal = addCasePrice + currentMobilePrice;
-                       subTotal.innerText = finalSubTotal;
-                       const total = document.getElementById("Total");
-                       const currentTotal = parseInt(total.innerText);
-                       const finalTotal = finalSubTotal;
-                       total.innerText = finalTotal;
-                       const tax = document.getElementById("tax");
-                       const currentTax = parseInt(tax.innerText);
-                       const totalTax = currentTax + 5;
-                       tax.innerText = totalTax;
-                    
-                       
-                    })
-                    document.getElementById("caseValue").value = "1";
-                    ///////////case plus btn area end//////////////////////
-
-
-                    ///////////case minus btn area start//////////////////////
-
-                    const caseMinusBtn = document.getElementById("caseMinusBtn");
-                    caseMinusBtn.addEventListener("click", function(){
-                     minusButton("caseValue");
-                       const casePrice = document.getElementById("casePrice");
-                       const currentCasePrice = parseInt(casePrice.innerText);
-                       const minusCasePrice = currentCasePrice - 59;
-                       casePrice.innerText = minusCasePrice;
-                       const subTotal = document.getElementById("subTotal");
-                       const currentSubTotal = parseInt(subTotal.innerText);
-                       const mobilePrice = document.getElementById("mobilePrice") ;
-                       const currentMobilePrice = parseInt(mobilePrice.innerText);
-                       const finalSubTotal =  minusCasePrice + currentMobilePrice;
-                       subTotal.innerText = finalSubTotal;
-                       const total = document.getElementById("Total");
-                       const currentTotal = parseInt(total.innerText);
-                       const finalTotal = finalSubTotal;
-                       total.innerText = finalTotal;
-                       const tax = document.getElementById("tax");
-                       const currentTax = parseInt(tax.innerText);
-                       const totalTax = currentTax - 5;
-                       tax.innerText = totalTax;
-                    
-
-                    })
+            let productTotal = 0;
+            if(product == 'mobile'){
+               productTotal = totalValue * 1219
+            }
+            else if(product == 'case'){
+               productTotal = totalValue * 59
+            }
+            document.getElementById(product + 'Price').innerText = productTotal;
 
 
 
-
-
-                    /////////try plus function start//////////////////////////
-                    function plusButton(id){
-                     const Value = document.getElementById(id);
-                       const currentValue = parseInt(Value.value);
-                        const addValue = currentValue + 1;
-                         Value.value = addValue;
-
-                    }
-                    /////////try plus function End//////////////////////////
-
-                    /////////try minus function start//////////////////////////
-                    function minusButton(id){
-                     const Value = document.getElementById(id);
-                       const currentValue = parseInt(Value.value);
-                        const addValue = currentValue - 1  ;
-                         Value.value = addValue;
-                    }
-                     
-
-
-                     /////////try minus function end//////////////////////////
+         }
 
 
 
-                    ////////try function end/////////////////////////
+         
+      
+
+         // function handleProductChange(plus) {
+         //    const mobileValue = document.getElementById("mobileValue");
+         //    const mobileCurrentValue = parseInt(mobileValue.value);
+         //    let totalValue = mobileCurrentValue;
+         //    if(plus == true){
+         //       totalValue = mobileCurrentValue + 1;
+
+         //    }
+         //    else if(plus == false && mobileCurrentValue > 0 ){
+         //       totalValue = mobileCurrentValue - 1;
+
+         //    }
+         //    mobileValue.value = totalValue;
+         //    const totalNewValue = totalValue;
+         //    const mobileTotal = totalNewValue * 1219;
+         //    document.getElementById("mobilePrice").innerText = mobileTotal;
+
+
+
+         // }
+
+         // function handleCaseChange(minus) {
+         //    const caseValue = document.getElementById("caseValue");
+         //    const caseCurrentValue = parseInt(caseValue.value);
+         //    let totalValue = caseCurrentValue;
+         //    if(minus == true){
+         //       totalValue = caseCurrentValue + 1;
+
+         //    }
+         //    else if(minus == false && caseCurrentValue > 0 ){
+         //       totalValue = caseCurrentValue - 1;
+
+         //    }
+         //    caseValue.value = totalValue;
+         //    const totalNewValue = totalValue;
+         //    const caseTotal = totalNewValue * 59;
+         //    document.getElementById("casePrice").innerText = caseTotal;
+
+
+
+         // }
+
+
+                   
 
                     /////////////mobile removeButton start//////////////////////////
 
@@ -291,8 +212,165 @@
 
 
    </script>
+               
+
+<!-- 
+//////////////////////mobile price area start////////////////////////////////////
+
+//////////////////////////////mobile plus btn area start///////////////////////////
+       const mobilePlusBtn = document.getElementById("mobilePlusBtn");
+       mobilePlusBtn.addEventListener("click", function(){
+          plusButton("mobileValue");
+         
+              const mobilePrice = document.getElementById("mobilePrice") ;
+              const currentMobilePrice = parseInt(mobilePrice.innerText);
+              const mobilePlusPrice = currentMobilePrice + 1219; 
+              mobilePrice.innerText = mobilePlusPrice;
+              const subTotal = document.getElementById("subTotal");
+              const currentSubTotal = parseInt(subTotal.innerText);
+              const casePrice = document.getElementById("casePrice");
+              const currentCasePrice = parseInt(casePrice.innerText);
+              const finalSubTotal = mobilePlusPrice + currentCasePrice;
+              subTotal.innerText = finalSubTotal;
+              
+              const tax = document.getElementById("tax");
+              const currentTax = parseInt(tax.innerText);
+              const totalTax = currentTax + 5;
+              tax.innerText = totalTax;
+              const total = document.getElementById("Total");
+              const currentTotal = parseInt(total.innerText);
+              const finalTotal = finalSubTotal;
+              total.innerText = finalTotal + totalTax;
 
 
+              
+         
+           })
+           ///////////mobile plus btn area end//////////////////////
+           document.getElementById("mobileValue").value = "1";
+
+           ////////////mobile minus area start///////////////////////
+
+       const mobileMinusBtn = document.getElementById("mobileMinusBtn");
+       mobileMinusBtn.addEventListener("click", function(){
+          minusButton("mobileValue")
+         
+              const mobilePrice = document.getElementById("mobilePrice") ;
+              const currentMobilePrice = parseInt(mobilePrice.innerText);
+              const totalMinusPrice = currentMobilePrice - 1219 ;
+              mobilePrice.innerText = totalMinusPrice;
+              const subTotal = document.getElementById("subTotal");
+              const currentSubTotal = parseInt(subTotal.innerText);
+              const casePrice = document.getElementById("casePrice");
+              const currentCasePrice = parseInt(casePrice.innerText);
+              const finalSubTotal = totalMinusPrice + currentCasePrice;
+              subTotal.innerText = finalSubTotal;
+              
+              const tax = document.getElementById("tax");
+              const currentTax = parseInt(tax.innerText);
+              const totalTax = currentTax - 5;
+              tax.innerText = totalTax;
+              const total = document.getElementById("Total");
+              const currentTotal = parseInt(total.innerText);
+              const finalTotal = finalSubTotal;
+              total.innerText = finalTotal - totalTax;
+              
+              
+              })
+              ///////////mobile minus btn area end////////////
+
+              ///////////mobile price area end////////////
+
+
+              //////////////////////case price area start////////////////////////////////////
+
+              ///////////case plus btn area start//////////////////////
+              const casePlusBtn = document.getElementById("casePlusBtn");
+              casePlusBtn.addEventListener("click", function(){
+                 plusButton("caseValue");
+               
+
+                 const casePrice = document.getElementById("casePrice");
+                 const currentCasePrice = parseInt(casePrice.innerText);
+                 const addCasePrice = currentCasePrice + 59;
+                 casePrice.innerText = addCasePrice;
+                 const subTotal = document.getElementById("subTotal");
+                 const currentSubTotal = parseInt(subTotal.innerText);
+                 const mobilePrice = document.getElementById("mobilePrice") ;
+                 const currentMobilePrice = parseInt(mobilePrice.innerText);
+                 const finalSubTotal = addCasePrice + currentMobilePrice;
+                 subTotal.innerText = finalSubTotal;
+                 
+                 const tax = document.getElementById("tax");
+                 const currentTax = parseInt(tax.innerText);
+                 const totalTax = currentTax + 5;
+                 tax.innerText = totalTax;
+                 const total = document.getElementById("Total");
+                 const currentTotal = parseInt(total.innerText);
+                 const finalTotal = finalSubTotal + totalTax;
+                 total.innerText = finalTotal;
+              
+                 
+              })
+              document.getElementById("caseValue").value = "1";
+              ///////////case plus btn area end//////////////////////
+
+
+              ///////////case minus btn area start//////////////////////
+
+              const caseMinusBtn = document.getElementById("caseMinusBtn");
+              caseMinusBtn.addEventListener("click", function(){
+               minusButton("caseValue");
+                 const casePrice = document.getElementById("casePrice");
+                 const currentCasePrice = parseInt(casePrice.innerText);
+                 const minusCasePrice = currentCasePrice - 59;
+                 casePrice.innerText = minusCasePrice;
+                 const subTotal = document.getElementById("subTotal");
+                 const currentSubTotal = parseInt(subTotal.innerText);
+                 const mobilePrice = document.getElementById("mobilePrice") ;
+                 const currentMobilePrice = parseInt(mobilePrice.innerText);
+                 const finalSubTotal =  minusCasePrice + currentMobilePrice;
+                 subTotal.innerText = finalSubTotal;
+                 
+                 const tax = document.getElementById("tax");
+                 const currentTax = parseInt(tax.innerText);
+                 const totalTax = currentTax - 5;
+                 tax.innerText = totalTax;
+                 const total = document.getElementById("Total");
+                 const currentTotal = parseInt(total.innerText);
+                 const finalTotal = finalSubTotal;
+                 total.innerText = finalTotal + totalTax;
+              
+
+              })
+
+
+
+
+
+              /////////try plus function start//////////////////////////
+              function plusButton(id){
+               const Value = document.getElementById(id);
+                 const currentValue = parseInt(Value.value);
+                  const addValue = currentValue + 1;
+                   Value.value = addValue;
+
+              }
+              /////////try plus function End//////////////////////////
+
+              /////////try minus function start//////////////////////////
+              function minusButton(id){
+               const Value = document.getElementById(id);
+                 const currentValue = parseInt(Value.value);
+                  const addValue = currentValue - 1  ;
+                   Value.value = addValue ;
+              }
+               
+
+
+               /////////try minus function end//////////////////////////
+
+ -->
 
 
 
